@@ -1,0 +1,195 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #faf8f1;
+}
+.body {
+  padding-top: 20px;
+}
+.nav {
+  background-color: #f0eabe;
+  text-align: right;
+  padding: 10px;
+  padding-right: 20px;
+}
+.nav > a {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+  color: #3b9ae1;
+  margin-right: 15px;
+}
+.login {
+  background-color: #f0eabe;
+  color: #3b9ae1;
+  padding: 10px;
+  margin: auto;
+  width: 300px;
+  padding-bottom: 20px;
+  margin-top: 100px;
+  border-radius: 10px;
+  border: 3px solid #3b9ae1;
+}
+.login > input {
+  width: 90%;
+  padding: 8px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 0.5px solid grey;
+  font-size: 16px;
+  text-align: left;
+  border: 1px solid #3b9ae1;
+}
+.login-btn {
+  width: 95%;
+  padding: 8px;
+  margin: 5px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  background-color: #3b9ae1;
+  color: #f0eabe;
+}
+.login > a {
+  margin-left: 35%;
+  font-size: 18px;
+  color: #3b9ae1;
+}
+.expense {
+  margin: auto;
+  width: 800px;
+  background-color: #f0eabe;
+  color: #3b9ae1;
+  border: 3px solid #3b9ae1;
+  border-radius: 10px;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+.user {
+  width: 20%;
+  background-color: #f0eabe;
+  color: #3b9ae1;
+  text-align: center;
+}
+i {
+  background-color: #f0eabe;
+}
+.user > div {
+  margin: 10px;
+  padding: 20px;
+  background-color: #3b9ae1;
+  color: #f0eabe;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.form-div {
+  background-color: #f0eabe;
+  color: #3b9ae1;
+  width: 80%;
+}
+.title-div {
+  background-color: #faf8f1;
+  color: black;
+  width: 350px;
+  text-align: center;
+  height: 25px;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 5px;
+  border-radius: 7px;
+  padding-bottom: 10px;
+}
+.title-div > p {
+  margin-top: 5px;
+}
+.line {
+  width: 450px;
+  height: 2px;
+  background-color: #3b9ae1;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  width: 70%;
+}
+input,
+select,
+textarea {
+  margin: 5px 0px;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #3b9ae1;
+  border-radius: 5px;
+}
+.title-input {
+  width: 70%;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.category-select {
+  width: 220px;
+  text-align: left;
+}
+.date-input {
+  width: 150px;
+  text-align: center;
+}
+.amount-input,
+.currency-select {
+  width: 200px;
+}
+.save-btn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: #3b9ae1;
+  color: #f0eabe;
+  margin-top: 5px;
+  margin-left: 60%;
+}
+.flex {
+  display: flex;
+  gap: 5px;
+}
+.flex > div > input {
+  width: 80px;
+}
+.budget-input,
+.currency-select {
+  width: 95%;
+}
+.save-btn-detail {
+  margin-left: 65%;
+}
+.data-div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-top: 25px;
+  padding: 0 30px;
+}
+.card {
+  background-color: #f0eabe;
+  color: #3b9ae1;
+  padding: 20px;
+  border: 2px solid #3b9ae1;
+  border-radius: 10px;
+  box-shadow: rgba(32, 176, 212, 0.5) -10px 10px;
+  font-size: 18px;
+  width: 250px;
+  overflow: hidden;
+}
+.card > button {
+  background-color: #3b9ae1;
+  color: #f0eabe;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+}

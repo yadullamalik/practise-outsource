@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="nav">
+      <a href="index.html">Login</a>
+      <a href="">Expense</a>
+      <a href="details.html">Details</a>
+    </div>
+    <div class="body">
+      <div class="expense">
+        <div class="user">
+          <i class="fa fa-user" style="font-size: 120px; color: black"></i>
+          <div>User</div>
+        </div>
+        <div class="form-div">
+          <div class="title-div">
+            <p>Add Expense To The Trip</p>
+          </div>
+          <div class="line"></div>
+          <div>
+            <label>Title</label>
+            <br />
+            <input class="title-input" type="text" placeholder="Trip Details" />
+            <br />
+            <div class="grid">
+              <div>
+                <label>Category</label>
+                <br />
+                <select class="category-select">
+                  <option value="">Accommodation</option>
+                  <option value="">Food</option>
+                  <option value="">Travel</option>
+                  <option value="">Stay</option>
+                </select>
+              </div>
+              <div>
+                <label>Date</label>
+                <br />
+                <input class="date-input" type="date" />
+              </div>
+              <div>
+                <label>Amount</label>
+                <br />
+                <input
+                  class="amount-input"
+                  type="number"
+                  placeholder="Add Amount"
+                />
+              </div>
+              <div>
+                <label>Currency</label>
+                <br />
+                <select class="currency-select">
+                  <option value="">Rupees</option>
+                  <option value="">Dollars</option>
+                  <option value="">Euros</option>
+                  <option value="">Pounds</option>
+                  <option value="">Yen</option>
+                  <option value="">Rand</option>
+                </select>
+              </div>
+            </div>
+            <button class="save-btn">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="data-div"></div>
+  </body>
+</html>
+<script>
+  let localExpenseData = JSON.parse(localStorage.getItem("tripExpense")) || [];
+
+  document.querySelector(".save-btn").addEventListener("click", () => {
+    let title = document.querySelector(".title-input");
+    let category = document.querySelector(".category-select");
+    let date = document.querySelector(".date-input");
+    let amount = document.querySelector(".amount-input");
+    let currency = document.querySelector(".currency-select");
+    const paylaod = {
+      title: title.value,
+      category: category.value,
+      currency: currency.value,
+      date: date.value,
+      amount: amount.value,
+      currency: currency.value,
+    };
+    localExpenseData.push(paylaod);
+    localStorage.setItem("tripExpense", JSON.stringify(localExpenseData));
+    title.value = "";
+    category.value = "";
+    date.value = "";
+    currency.value = "";
+    addData();
+  });
+
+  let data_div = document.querySelector(".data-div");
+  addData();
+  function addData() {
+    data_div.innerHTML = "";
+    localExpenseData.forEach((e, index) => {
+      let card = document.createElement("div");
+      card.setAttribute("class", "card");
+      let title = document.createElement("h2");
+      title.innerText = e.title;
+      let category = document.createElement("p");
+      category.innerText = "Category- " + e.category;
+      let date = document.createElement("p");
+      date.innerText = "Date- " + e.date;
+      let currency = document.createElement("p");
+      currency.innerText = "Currency- " + e.currency;
+      let Delete = document.createElement("button");
+      Delete.innerText = "Delete";
+      Delete.addEventListener("click", () => {
+        localExpenseData.splice(index, 1);
+        localStorage.setItem("tripExpense", JSON.stringify(localExpenseData));
+        addData();
+      });
+      card.append(title, category, date, currency, Delete);
+      data_div.append(card);
+    });
+  }
+</script>

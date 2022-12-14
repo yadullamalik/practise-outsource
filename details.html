@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="nav">
+      <a href="index.html">Login</a>
+      <a href="expense.html">Expense</a>
+      <a href="">Details</a>
+    </div>
+    <div class="body">
+      <div class="expense">
+        <div class="user">
+          <i class="fa fa-user" style="font-size: 100px; color: black"></i>
+          <div>User</div>
+        </div>
+        <div class="form-div">
+          <div class="title-div">
+            <p>Add Trip Details</p>
+          </div>
+          <div class="line"></div>
+          <div>
+            <label>Title</label>
+            <br />
+            <input class="title-input" type="text" placeholder="Trip Details" />
+            <br />
+            <div class="grid">
+              <div>
+                <label>Budget</label>
+                <br />
+                <input class="budget-input" type="text" placeholder="Budget" />
+              </div>
+              <div>
+                <label>Currency</label>
+                <br />
+                <select class="currency-select">
+                  <option value="Rupees">Rupees</option>
+                  <option value="Dollars">Dollars</option>
+                  <option value="Euros">Euros</option>
+                  <option value="Pounds">Pounds</option>
+                  <option value="Yen">Yen</option>
+                  <option value="Rand">Rand</option>
+                </select>
+              </div>
+              <div class="flex">
+                <div>
+                  <label>Start Date</label>
+                  <br />
+                  <input type="date" class="start-date" />
+                </div>
+                <div>
+                  <label>End Date</label>
+                  <br />
+                  <input type="date" class="end-date" />
+                </div>
+              </div>
+              <div>
+                <label>Countries</label>
+                <br />
+                <textarea
+                  class="countries-textarea"
+                  cols="30"
+                  rows="4"
+                ></textarea>
+              </div>
+            </div>
+            <button class="save-btn save-btn-detail">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="data-div"></div>
+  </body>
+</html>
+<script>
+  let localDetailsData = JSON.parse(localStorage.getItem("tripDetails")) || [];
+
+  document.querySelector(".save-btn").addEventListener("click", () => {
+    let title = document.querySelector(".title-input");
+    let budget = document.querySelector(".budget-input");
+    let currency = document.querySelector(".currency-select");
+    let start = document.querySelector(".start-date");
+    let end = document.querySelector(".end-date");
+    let countries = document.querySelector(".countries-textarea");
+    const paylaod = {
+      title: title.value,
+      budget: budget.value,
+      currency: currency.value,
+      start: start.value,
+      end: end.value,
+      countries: countries.value,
+    };
+    localDetailsData.push(paylaod);
+    localStorage.setItem("tripDetails", JSON.stringify(localDetailsData));
+    title.value = "";
+    budget.value = "";
+    currency.value = "";
+    start.value = "";
+    end.value = "";
+    countries.value = "";
+    addData();
+  });
+
+  let data_div = document.querySelector(".data-div");
+  addData();
+  function addData() {
+    data_div.innerHTML = "";
+    localDetailsData.forEach((e, index) => {
+      let card = document.createElement("div");
+      card.setAttribute("class", "card");
+      let title = document.createElement("h2");
+      title.innerText = e.title;
+      let budget = document.createElement("p");
+      budget.innerText = "Budget- " + e.budget;
+      let currency = document.createElement("p");
+      currency.innerText = "Currency- " + e.currency;
+      let start = document.createElement("p");
+      start.innerText = "Start Date- " + e.start;
+      let end = document.createElement("p");
+      end.innerText = "End Date- " + e.end;
+      let countries = document.createElement("p");
+      countries.innerText = "Countries- " + e.countries;
+      let Delete = document.createElement("button");
+      Delete.innerText = "Delete";
+      Delete.addEventListener("click", () => {
+        localDetailsData.splice(index, 1);
+        localStorage.setItem("tripDetails", JSON.stringify(localDetailsData));
+        addData();
+      });
+      card.append(title, budget, currency, start, end, countries, Delete);
+      data_div.append(card);
+    });
+  }
+</script>
